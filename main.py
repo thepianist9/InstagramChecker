@@ -1,3 +1,4 @@
+import os
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -8,6 +9,8 @@ import pyautogui as pt
 
 class Program:
     def __init__(self, username):
+        if not os.path.isfile(os.path.join(os.getcwd(), "chromedriver.exe")):
+            raise Exception("chromedriver.exe is not in your current working directory")
         self.driver = webdriver.Chrome("chromedriver.exe")
         self.username = username
 
