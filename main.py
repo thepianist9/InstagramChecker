@@ -93,4 +93,4 @@ program.goes_to_profile("put_your_password")
 
 followers = program.get_f("followers")
 following = program.get_f("following")
-print("The people that dont follow you but you follow:\n", program.compare_followers_following(followers, following))
+print("The people that dont follow you but you follow:\n" + program.compare_followers_following(followers, following))
