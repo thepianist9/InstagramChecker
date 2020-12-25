@@ -10,7 +10,7 @@ import pyautogui as pt
 class Program:
     def __init__(self, username):
         if not os.path.isfile(os.path.join(os.getcwd(), "chromedriver.exe")):
-            print("chromedriver.exe is not in your current working directory")
+            print("chromedriver.exe is not in your current working directory (details in README)")
             exit(-1)
         self.driver = webdriver.Chrome("chromedriver.exe")
         self.username = username
