@@ -69,11 +69,10 @@ class Program:
                 break
             pt.scroll(-800)
             time.sleep(.6)
+        pt.leftClick(max_x / 4, max_y / 2)
         f_list = self.driver.find_elements_by_tag_name("a")
         f_list_text = [f.text for f in f_list]
-        f_names = list(filter(self.check_if_exist, f_list_text))
-        pt.leftClick(max_x / 4, max_y / 2)
-        return f_names
+        return list(filter(self.check_if_exist, f_list_text))
 
     # returns the people that you follow but they dont follow you back
     @staticmethod
