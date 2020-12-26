@@ -47,7 +47,7 @@ class Program:
         except OSError:
             pass
 
-        # go to your profile
+        # it goes to your profile
         self.driver.get("http://www.instagram.com/" + self.username)
 
     # parameters can be only followers or following
