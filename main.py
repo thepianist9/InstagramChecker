@@ -90,7 +90,7 @@ class Program:
 
 
 program = Program("your_username")
-program.goes_to_profile("your_password*")
+program.goes_to_profile("your_password")
 
 followers = program.get_f("followers")
 following = program.get_f("following")
