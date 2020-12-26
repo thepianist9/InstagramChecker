@@ -25,6 +25,8 @@ class Program:
             EC.element_to_be_clickable((By.CSS_SELECTOR, "input[name='password']")))
         username.clear()
         password.clear()
+
+        # Write your username and password
         username.send_keys(self.username)
         password.send_keys(password_given)
 
@@ -89,7 +91,6 @@ class Program:
 
 program = Program("your_username")
 program.goes_to_profile("your_password")
-
 followers = program.get_f("followers")
 following = program.get_f("following")
 print("The people that dont follow you but you follow:\n" + program.compare_followers_following(followers, following))
