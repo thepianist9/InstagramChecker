@@ -46,7 +46,6 @@ class Program:
             pass
 
         # go to your profile
-        time.sleep(2)
         self.driver.get("http://www.instagram.com/" + self.username)
 
     # parameters can be only followers or following
