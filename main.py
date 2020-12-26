@@ -37,11 +37,13 @@ class Program:
                                                                          "button[type='submit']"))).click()
         time.sleep(4)
 
-        # Not now
-        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, "sqdOP.yWX7d.y3zKF"))).click()
+        try:  # answer to "Save login password" questions with a Not now
+            WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.CLASS_NAME, "sqdOP.yWX7d.y3zKF"))).click()
 
-        # Not now 2
-        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, "aOOlW.HoLwm "))).click()
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, "aOOlW.HoLwm "))).click()
+        except OSError:
+            pass
 
         # go to your profile
         time.sleep(2)
@@ -49,8 +51,6 @@ class Program:
 
     # parameters can be only followers or following
     def get_f(self, f):
-        time.sleep(4)
-
         # maximize the window
         pt.keyDown('winleft')
         pt.press('up')
@@ -60,12 +60,12 @@ class Program:
         f_button = self.driver.find_element_by_xpath('//a[@href="' + href_f + '"]')
         f_amount = int(f_button.text.split()[0])  # num of followers of following
         f_button.click()
-        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, "isgrP"))).click()
         max_x, max_y = pt.size()
         pt.moveTo(max_x / 2, max_y / 2, duration=0.5)
         time.sleep(1)
         while True:
-            html_list = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, "PZuss")))
+            # isgrP is the div where the ul with all the li (followers all followings are)
+            html_list = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, "isgrP")))
             if len(html_list.find_elements_by_tag_name("li")) == f_amount:
                 break
             pt.scroll(-800)
@@ -90,10 +90,7 @@ class Program:
 
 
 program = Program("your_username")
-program.goes_to_profile("put_your_password")
-
-# uncomment this line if you dont want the program to goes to your profile automatically and comment row 91
-# input()  # Run the program, go yourself to your instagram_profile, comeback press a key, go back to the chrome_window
+program.goes_to_profile("your_password*")
 
 followers = program.get_f("followers")
 following = program.get_f("following")
