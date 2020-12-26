@@ -28,7 +28,7 @@ class Program:
         username.send_keys(self.username)
         password.send_keys(password_given)
 
-        # Accept Cookies  (pt) comes from accept in every language
+        # Accept Cookies  (pt) comes from accept 
         WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'pt')]"))).click()
 
