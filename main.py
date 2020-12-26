@@ -59,10 +59,10 @@ class Program:
 
         href_f = "/" + self.username + "/" + f + "/"
         f_button = self.driver.find_element_by_xpath('//a[@href="' + href_f + '"]')
-        f_amount = int(f_button.text.split()[0])  # num of followers of following
+        f_amount = int(f_button.text.split()[0])  # num of followers or of following (parameter given)
         f_button.click()
         max_x, max_y = pt.size()
-        pt.moveTo(max_x / 2, max_y / 2, duration=0.5)
+        pt.moveTo(max_x / 2, max_y / 2, duration=0.5)  # hover on it so it can scroll down
         time.sleep(1)
         while True:
             # isgrP is the div where the ul with all the li (followers all followings are)
@@ -70,7 +70,7 @@ class Program:
             if len(html_list.find_elements_by_tag_name("li")) == f_amount:
                 break
             pt.scroll(-800)
-            time.sleep(.6)
+            time.sleep(.5)
         pt.leftClick(max_x / 4, max_y / 2)
         f_list = self.driver.find_elements_by_tag_name("a")
         f_list_text = [f.text for f in f_list]
