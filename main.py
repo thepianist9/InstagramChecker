@@ -64,7 +64,7 @@ class Program:
         f_amount = int(f_button.text.split()[0])  # num of followers or of following (parameter given)
         f_button.click()
         while True:
-            # isgrP is the div where the ul with all the li (followers all followings are)
+            # isgrP is the class name of the div where the ul with all the li (all followers or followings) are
             html_list = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, "isgrP")))
             if len(html_list.find_elements_by_tag_name("li")) == f_amount:
                 break
